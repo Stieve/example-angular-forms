@@ -1,0 +1,60 @@
+<div class="row">
+      <div class="col s3">
+        <img class="responsive-img" src="assets/images/nacho.png">
+      </div>
+      <div class="col s9">
+        
+        <form #orderForm="ngForm"
+              (ngSubmit)="sendOrder(orderForm)"> 
+          
+          <div class="row">
+            <div class="col s6">
+              <label for="inputFirstName">First Name:</label>
+              <input id="inputFirstName"
+               type="text"
+               required
+               [(ngModel)]="order.firstName"
+               name="firstName"
+               #firstNameVar="ngModel"/>
+              <span style="color: red" [hidden]="firstNameVar.valid || !firstNameVar.touched">
+                <small>{{'Please enter your first name'}}</small>
+              </span>
+            </div>
+
+            <div class="col s6">
+              <label for="inputLastName">Last Name:</label>
+              <input id="inputLastName"
+               type="text"
+               required
+               [(ngModel)]="order.lastName"
+               name="lastName"
+               #lastNameVar="ngModel"/>
+              <span style="color: red" [hidden]="lastNameVar.valid || !lastNameVar.touched">
+                <small>{{'Please enter your last name'}}</small>
+              </span>
+            </div>
+          </div>
+          
+          <label for="inputSauce">Choose your favorite sauce:</label>
+          <div class="row">
+            <div class="col s4">
+              <input id="salsa" class="with-gap" name="sauce" type="radio" value="salsa" [(ngModel)]="order.sauce" />
+              <label for="salsa">Salsa</label>
+            </div>
+            <div class="col s4">
+              <input id="guacamole" class="with-gap" name="sauce" type="radio" value="guacamole" [(ngModel)]="order.sauce"/>
+              <label for="guacamole">Guacamole</label>
+            </div>
+            <div class="col s4">
+              <input id="chili" class="with-gap" name="sauce" type="radio" value="chili" [(ngModel)]="order.sauce"/>
+              <label for="chili">Sweet chili</label>
+            </div>
+          </div>
+
+          <br/>
+
+          <button class="btn waves-effect waves-light" type="submit" [disabled]="!orderForm.valid">Order <i class="material-icons right">send</i></button>
+
+        </form>
+      </div>
+    </div>
