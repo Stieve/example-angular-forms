@@ -2,14 +2,11 @@
   {{title}}
 </h1>
 
-<div class="section">
-  <h4>Template-driven</h4>
-  <app-template-driven></app-template-driven>
-</div>
+<p>
+  <a routerLink="/template-driven" routerLinkActive="active" class="waves-effect waves-light btn-large"><i class="material-icons left">cloud</i>Template-driven</a>
+  <a routerLink="/reactive" routerLinkActive="active" class="waves-effect waves-light btn-large"><i class="material-icons left">cloud</i>Reactive</a>
+</p>
 
 <div class="divider"></div>
 
-<div class="section">
-  <h4>Reactive / model-driven</h4>
-  <app-reactive></app-reactive>
-</div>
+<router-outlet></router-outlet>

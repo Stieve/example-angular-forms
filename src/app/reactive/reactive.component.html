@@ -1,3 +1,65 @@
-<p>
-  reactive works!
-</p>
+<div class="row">
+  <h2>Reactive Form</h2>
+</div>
+<div class="row">
+      <div class="col s3">
+        <img class="responsive-img" src="assets/images/nacho.png">
+      </div>
+      <div class="col s9">
+        
+        <p>
+          <form [formGroup]="orderForm"
+                (ngSubmit)="sendOrder()"> 
+            
+            <div class="row">
+              <div class="col s6">
+                <label for="inputFirstName">First Name:</label>
+                <input id="inputFirstName"
+                type="text"
+                formControlName="firstName"/>
+                <span style="color: red" *ngIf="(orderForm.get('firstName').touched && !orderForm.get('firstName').valid)">
+                  <small>{{'Please enter your first name'}}</small>
+                </span>
+              </div>
+
+              <div class="col s6">
+                <label for="inputLastName">Last Name:</label>
+                <input id="inputLastName"
+                type="text"
+                formControlName="lastName"/>
+                <span style="color: red" *ngIf="(orderForm.get('lastName').touched && !orderForm.get('lastName').valid)">
+                  <small>{{'Please enter your last name'}}</small>
+                </span>
+              </div>
+            </div>
+            
+            <label for="inputSauce">Choose your favorite sauce:</label>
+            <div class="row">
+              <div class="col s4">
+                <input id="salsa" class="with-gap" name="mySauce" type="radio" value="salsa" formControlName="mySauce" />
+                <label for="salsa">Salsa</label>
+              </div>
+              <div class="col s4">
+                <input id="guacamole" class="with-gap" name="mySauce" type="radio" value="guacamole" formControlName="mySauce"/>
+                <label for="guacamole">Guacamole</label>
+              </div>
+              <div class="col s4">
+                <input id="chili" class="with-gap" name="mySauce" type="radio" value="chili" formControlName="mySauce"/>
+                <label for="chili">Sweet chili</label>
+              </div>
+            </div>
+
+            <br/>
+
+            <button class="btn waves-effect waves-light" type="submit" [disabled]="!orderForm.valid">Order <i class="material-icons right">send</i></button>
+
+          </form>
+      </div>
+</div>
+<div class="row">
+  <div class="divider"></div>
+</div>
+<div class="row">
+  <a class="waves-effect waves-light btn-large" (click)="setDefaults()">Set defaults</a>
+  <a class="waves-effect waves-light btn-large" (click)="patchDefaults()">Patch defaults</a>
+</div>

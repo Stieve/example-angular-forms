@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Order } from '../models/order';
 
 @Component({
   selector: 'app-reactive',
@@ -7,9 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReactiveComponent implements OnInit {
 
+  orderForm: FormGroup;
+  order: Order;
+
   constructor() { }
 
   ngOnInit() {
+    this.orderForm = new FormGroup({
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      mySauce: new FormControl('chili')
+    });
   }
 
+  sendOrder(): void {
+    console.log(this.orderForm);
+  }
+
+  setDefaults(): void{
+    this.orderForm.setValue({
+      firstName: 'Stieve',
+      lastName: 'Verheyden',
+      mySauce: 'chili'
+    });
+  }
+
+  patchDefaults(): void {
+    this.orderForm.patchValue({
+      firstName: 'José',
+      mySauce: 'guacamole'
+    });
+  }
 }
