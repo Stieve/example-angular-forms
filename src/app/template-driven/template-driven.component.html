@@ -20,7 +20,7 @@
                name="firstName"
                #firstNameVar="ngModel"/>
               <span style="color: red" [hidden]="firstNameVar.valid || !firstNameVar.touched">
-                <small>{{'Please enter your first name'}}</small>
+                <small *ngIf="firstNameVar.errors && firstNameVar.errors.required">{{'Please enter your first name'}}</small>
               </span>
             </div>
 

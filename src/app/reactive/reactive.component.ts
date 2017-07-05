@@ -25,19 +25,4 @@ export class ReactiveComponent implements OnInit {
   sendOrder(): void {
     console.log(this.orderForm);
   }
-
-  setDefaults(): void{
-    this.orderForm.setValue({
-      firstName: 'Stieve',
-      lastName: 'Verheyden',
-      mySauce: 'chili'
-    });
-  }
-
-  patchDefaults(): void {
-    this.orderForm.patchValue({
-      firstName: 'José',
-      mySauce: 'guacamole'
-    });
-  }
 }

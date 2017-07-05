@@ -18,7 +18,7 @@
                 type="text"
                 formControlName="firstName"/>
                 <span style="color: red" *ngIf="(orderForm.get('firstName').touched && !orderForm.get('firstName').valid)">
-                  <small>{{'Please enter your first name'}}</small>
+                  <small *ngIf="orderForm.get('firstName').errors.required">{{'Please enter your first name'}}</small>
                 </span>
               </div>
 
@@ -55,11 +55,4 @@
 
           </form>
       </div>
-</div>
-<div class="row">
-  <div class="divider"></div>
-</div>
-<div class="row">
-  <a class="waves-effect waves-light btn-large" (click)="setDefaults()">Set defaults</a>
-  <a class="waves-effect waves-light btn-large" (click)="patchDefaults()">Patch defaults</a>
 </div>
