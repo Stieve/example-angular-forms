@@ -33,7 +33,7 @@
                name="lastName"
                #lastNameVar="ngModel"/>
               <span style="color: red" [hidden]="lastNameVar.valid || !lastNameVar.touched">
-                <small>{{'Please enter your last name'}}</small>
+                <small *ngIf="lastNameVar.errors && lastNameVar.errors.required">{{'Please enter your last name'}}</small>
               </span>
             </div>
           </div>
